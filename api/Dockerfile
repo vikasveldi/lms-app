@@ -1,12 +1,11 @@
 # Docker file nodejs azure app services
 FROM node:20
-# Create app directory
-WORKDIR /app
-# Install app dependencies
-COPY package*.json ./
-RUN npm install
-# Build app
+# Create api directory
+WORKDIR /api
+# Install api dependencies
 COPY . .
+RUN npm install
+# Build api
 RUN npx prisma generate
 RUN npm run build
 # Expose port
